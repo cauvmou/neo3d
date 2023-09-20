@@ -60,7 +60,7 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 loom {
-	accessWidenerPath = file("src/main/resources/vulkanmod.accesswidener")
+	accessWidenerPath = file("src/main/resources/neo3d.accesswidener")
 }
 
 java {
