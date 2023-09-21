@@ -1,13 +1,9 @@
 package net.neo3d.config;
 
 import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.Util;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.events.GuiEventListener;
-import net.minecraft.client.gui.screens.ConfirmLinkScreen;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
@@ -15,7 +11,6 @@ import net.minecraft.util.FormattedCharSequence;
 import net.neo3d.Initializer;
 import net.neo3d.config.widget.CustomButtonWidget;
 import net.neo3d.config.widget.OptionWidget;
-import net.neo3d.vulkan.util.VUtil;
 
 import java.util.ArrayList;
 import java.util.List;

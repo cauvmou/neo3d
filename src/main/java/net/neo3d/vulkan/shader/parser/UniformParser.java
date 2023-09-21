@@ -3,8 +3,8 @@ package net.neo3d.vulkan.shader.parser;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.neo3d.vulkan.shader.Pipeline;
 import net.neo3d.vulkan.shader.descriptor.Image;
-import net.neo3d.vulkan.shader.layout.AlignedStruct;
 import net.neo3d.vulkan.shader.descriptor.UBO;
+import net.neo3d.vulkan.shader.layout.AlignedStruct;
 
 import java.util.ArrayList;
 import java.util.List;

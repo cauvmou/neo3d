@@ -3,10 +3,7 @@ package net.neo3d.config;
 import com.mojang.blaze3d.platform.Window;
 import net.minecraft.client.*;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.contents.LiteralContents;
-import net.minecraft.network.chat.contents.TranslatableContents;
 import net.neo3d.Initializer;
-import net.neo3d.vulkan.Drawer;
 import net.neo3d.vulkan.Renderer;
 
 public class Options {

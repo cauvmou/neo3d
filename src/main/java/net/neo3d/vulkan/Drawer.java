@@ -1,7 +1,6 @@
 package net.neo3d.vulkan;
 
 import com.mojang.blaze3d.vertex.VertexFormat;
-import net.neo3d.render.chunk.AreaUploadManager;
 import net.neo3d.vulkan.memory.*;
 import net.neo3d.vulkan.util.VUtil;
 import org.lwjgl.system.MemoryUtil;
@@ -12,7 +11,6 @@ import java.nio.LongBuffer;
 import java.util.Arrays;
 
 import static org.lwjgl.vulkan.VK10.*;
-import static org.lwjgl.vulkan.VK10.vkCmdDraw;
 
 public class Drawer {
     private static final int INITIAL_VB_SIZE = 2000000;

@@ -1,13 +1,12 @@
 package net.neo3d.vulkan.shader;
 
 import com.mojang.blaze3d.platform.GlStateManager;
-import net.neo3d.vulkan.framebuffer.RenderPass;
 import net.neo3d.vulkan.VRenderSystem;
+import net.neo3d.vulkan.framebuffer.RenderPass;
 
 import java.util.Objects;
 
 import static org.lwjgl.vulkan.VK10.*;
-import static org.lwjgl.vulkan.VK10.VK_COMPARE_OP_EQUAL;
 
 public class PipelineState {
     public static final BlendState DEFAULT_BLEND_STATE = defaultBlendInfo().createBlendState();

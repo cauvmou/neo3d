@@ -4,12 +4,12 @@ import net.neo3d.vulkan.Synchronization;
 import net.neo3d.vulkan.Vulkan;
 import net.neo3d.vulkan.util.VUtil;
 import org.lwjgl.system.MemoryStack;
-import org.lwjgl.vulkan.*;
-
-import java.util.ArrayDeque;
+import org.lwjgl.vulkan.VkBufferCopy;
+import org.lwjgl.vulkan.VkDevice;
 
 import static org.lwjgl.system.MemoryStack.stackPush;
-import static org.lwjgl.vulkan.VK10.*;
+import static org.lwjgl.vulkan.VK10.vkCmdCopyBuffer;
+import static org.lwjgl.vulkan.VK10.vkWaitForFences;
 
 public class TransferQueue extends Queue {
     private static final VkDevice DEVICE = Vulkan.getDevice();

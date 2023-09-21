@@ -1,6 +1,5 @@
 package net.neo3d.vulkan;
 
-import net.neo3d.vulkan.framebuffer.SwapChain;
 import org.lwjgl.PointerBuffer;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.vulkan.*;

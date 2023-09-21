@@ -1,6 +1,9 @@
 package net.neo3d.vulkan.memory;
 
-import net.neo3d.vulkan.*;
+import net.neo3d.vulkan.Device;
+import net.neo3d.vulkan.Renderer;
+import net.neo3d.vulkan.Synchronization;
+import net.neo3d.vulkan.Vulkan;
 import net.neo3d.vulkan.queue.CommandPool;
 import net.neo3d.vulkan.queue.TransferQueue;
 

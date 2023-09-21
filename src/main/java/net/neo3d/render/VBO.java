@@ -9,9 +9,11 @@ import net.minecraft.client.renderer.ShaderInstance;
 import net.neo3d.interfaces.ShaderMixed;
 import net.neo3d.vulkan.Renderer;
 import net.neo3d.vulkan.VRenderSystem;
-import net.neo3d.vulkan.memory.*;
+import net.neo3d.vulkan.memory.AutoIndexBuffer;
+import net.neo3d.vulkan.memory.IndexBuffer;
+import net.neo3d.vulkan.memory.MemoryTypes;
+import net.neo3d.vulkan.memory.VertexBuffer;
 import net.neo3d.vulkan.shader.GraphicsPipeline;
-import net.neo3d.vulkan.shader.Pipeline;
 import org.joml.Matrix4f;
 
 import java.nio.ByteBuffer;

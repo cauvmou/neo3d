@@ -22,13 +22,16 @@ import net.minecraft.world.phys.Vec3;
 import net.neo3d.Initializer;
 import net.neo3d.interfaces.VisibilitySetExtended;
 import net.neo3d.render.chunk.RenderSection;
+import net.neo3d.render.chunk.TerrainShaderManager;
 import net.neo3d.render.chunk.WorldRenderer;
 import net.neo3d.render.vertex.TerrainBufferBuilder;
 import net.neo3d.render.vertex.TerrainRenderType;
-import net.neo3d.render.chunk.TerrainShaderManager;
 
 import javax.annotation.Nullable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicBoolean;
 

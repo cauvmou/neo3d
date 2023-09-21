@@ -1,7 +1,6 @@
 package net.neo3d.config.widget;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.sounds.SoundManager;
@@ -9,7 +8,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.neo3d.config.RangeOption;
 import net.neo3d.vulkan.util.ColorUtil;
-import net.neo3d.vulkan.util.VUtil;
 import org.lwjgl.glfw.GLFW;
 
 public class RangeOptionWidget extends OptionWidget {

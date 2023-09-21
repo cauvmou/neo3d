@@ -1,13 +1,9 @@
 package net.neo3d.vulkan.queue;
 
 import net.neo3d.vulkan.Synchronization;
-import net.neo3d.vulkan.Vulkan;
-import net.neo3d.vulkan.memory.MemoryManager;
-import net.neo3d.vulkan.util.VUtil;
 import org.lwjgl.system.MemoryStack;
-import org.lwjgl.vulkan.*;
 
-import static org.lwjgl.vulkan.VK10.*;
+import static org.lwjgl.vulkan.VK10.VK_NULL_HANDLE;
 
 public class GraphicsQueue extends Queue {
     public static GraphicsQueue INSTANCE;

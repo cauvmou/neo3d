@@ -2,8 +2,6 @@ package net.neo3d.vulkan;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.neo3d.vulkan.queue.CommandPool;
-import net.neo3d.vulkan.queue.GraphicsQueue;
-import net.neo3d.vulkan.queue.TransferQueue;
 import net.neo3d.vulkan.util.VUtil;
 import org.lwjgl.system.MemoryUtil;
 import org.lwjgl.vulkan.VkDevice;

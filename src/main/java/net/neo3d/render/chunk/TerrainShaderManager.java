@@ -7,7 +7,6 @@ import net.neo3d.render.vertex.CustomVertexFormat;
 import net.neo3d.vulkan.shader.GraphicsPipeline;
 import net.neo3d.vulkan.shader.Pipeline;
 
-import java.util.function.Consumer;
 import java.util.function.Function;
 
 public abstract class TerrainShaderManager {

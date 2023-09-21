@@ -3,11 +3,13 @@ package net.neo3d.vulkan.texture;
 import com.mojang.blaze3d.platform.NativeImage;
 import it.unimi.dsi.fastutil.bytes.Byte2LongArrayMap;
 import it.unimi.dsi.fastutil.bytes.Byte2LongMap;
-import net.neo3d.vulkan.*;
+import net.neo3d.vulkan.Device;
+import net.neo3d.vulkan.Renderer;
+import net.neo3d.vulkan.Synchronization;
+import net.neo3d.vulkan.Vulkan;
 import net.neo3d.vulkan.memory.MemoryManager;
 import net.neo3d.vulkan.memory.StagingBuffer;
 import net.neo3d.vulkan.queue.CommandPool;
-import net.neo3d.vulkan.queue.GraphicsQueue;
 import net.neo3d.vulkan.util.VUtil;
 import org.lwjgl.PointerBuffer;
 import org.lwjgl.system.MemoryStack;
@@ -17,7 +19,7 @@ import java.nio.ByteBuffer;
 import java.nio.LongBuffer;
 import java.util.Objects;
 
-import static net.neo3d.vulkan.Vulkan.*;
+import static net.neo3d.vulkan.Vulkan.getDevice;
 import static org.lwjgl.system.MemoryStack.stackPush;
 import static org.lwjgl.vulkan.VK10.*;
 

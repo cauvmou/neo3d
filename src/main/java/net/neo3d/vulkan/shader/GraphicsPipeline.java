@@ -16,11 +16,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static net.neo3d.vulkan.shader.PipelineState.*;
-import static net.neo3d.vulkan.shader.PipelineState.DEFAULT_COLORMASK;
 import static org.lwjgl.system.MemoryStack.stackGet;
 import static org.lwjgl.system.MemoryStack.stackPush;
 import static org.lwjgl.vulkan.VK10.*;
-import static org.lwjgl.vulkan.VK10.vkDestroyPipelineLayout;
 
 public class GraphicsPipeline extends Pipeline {
 

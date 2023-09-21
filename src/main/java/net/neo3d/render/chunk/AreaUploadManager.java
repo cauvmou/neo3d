@@ -1,7 +1,10 @@
 package net.neo3d.render.chunk;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.neo3d.vulkan.*;
+import net.neo3d.vulkan.Device;
+import net.neo3d.vulkan.Renderer;
+import net.neo3d.vulkan.Synchronization;
+import net.neo3d.vulkan.Vulkan;
 import net.neo3d.vulkan.memory.Buffer;
 import net.neo3d.vulkan.memory.StagingBuffer;
 import net.neo3d.vulkan.queue.CommandPool;
@@ -9,8 +12,6 @@ import net.neo3d.vulkan.queue.TransferQueue;
 import org.apache.commons.lang3.Validate;
 
 import java.nio.ByteBuffer;
-
-import static org.lwjgl.vulkan.VK10.vkWaitForFences;
 
 public class AreaUploadManager {
     public static AreaUploadManager INSTANCE;

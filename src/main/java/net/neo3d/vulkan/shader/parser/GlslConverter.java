@@ -1,7 +1,6 @@
 package net.neo3d.vulkan.shader.parser;
 
 import com.mojang.blaze3d.vertex.VertexFormat;
-import net.neo3d.vulkan.shader.Pipeline;
 import net.neo3d.vulkan.shader.descriptor.Image;
 import net.neo3d.vulkan.shader.descriptor.UBO;
 

@@ -4,7 +4,6 @@ import it.unimi.dsi.fastutil.objects.Reference2ReferenceOpenHashMap;
 import net.neo3d.render.chunk.util.Util;
 import net.neo3d.vulkan.Device;
 import net.neo3d.vulkan.memory.*;
-import net.neo3d.vulkan.queue.TransferQueue;
 
 import java.nio.ByteBuffer;
 import java.util.LinkedList;

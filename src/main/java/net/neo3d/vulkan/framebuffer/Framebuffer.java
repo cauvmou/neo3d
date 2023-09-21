@@ -12,7 +12,7 @@ import org.lwjgl.vulkan.*;
 
 import java.nio.LongBuffer;
 
-import static net.neo3d.vulkan.Vulkan.*;
+import static net.neo3d.vulkan.Vulkan.DYNAMIC_RENDERING;
 import static org.lwjgl.vulkan.VK10.*;
 
 public class Framebuffer {

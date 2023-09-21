@@ -2,7 +2,6 @@ package net.neo3d.vulkan.memory;
 
 import net.neo3d.vulkan.Device;
 import net.neo3d.vulkan.Renderer;
-import net.neo3d.vulkan.queue.TransferQueue;
 import net.neo3d.vulkan.Vulkan;
 import net.neo3d.vulkan.util.VUtil;
 import org.lwjgl.vulkan.VkMemoryType;

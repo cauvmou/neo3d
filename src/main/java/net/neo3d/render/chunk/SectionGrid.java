@@ -2,12 +2,12 @@ package net.neo3d.render.chunk;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.client.Minecraft;
-import net.neo3d.render.chunk.util.CircularIntList;
-import net.neo3d.render.chunk.util.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.Level;
+import net.neo3d.render.chunk.util.CircularIntList;
+import net.neo3d.render.chunk.util.Util;
 import net.neo3d.render.profiling.Profiler;
 
 import javax.annotation.Nullable;
