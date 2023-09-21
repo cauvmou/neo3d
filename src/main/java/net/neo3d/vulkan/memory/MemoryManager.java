@@ -2,7 +2,6 @@ package net.neo3d.vulkan.memory;
 
 import it.unimi.dsi.fastutil.longs.Long2ReferenceOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import jdk.jfr.StackTrace;
 import net.neo3d.vulkan.Vulkan;
 import net.neo3d.vulkan.texture.VulkanImage;
 import org.apache.commons.lang3.Validate;
