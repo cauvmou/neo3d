@@ -2,10 +2,9 @@ package net.neo3d.mixin.texture;
 
 import com.mojang.blaze3d.platform.NativeImage;
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.neo3d.vulkan.Vulkan;
-import net.neo3d.vulkan.texture.VTextureSelector;
-import net.neo3d.vulkan.texture.VulkanImage;
-import net.neo3d.vulkan.util.ColorUtil;
+import net.neo3d.backend.util.NeoHelper;
+import net.neo3d.backend.texture.NeoTexture;
+import net.neo3d.backend.texture.NeoTextureSelector;
 import org.lwjgl.system.MemoryUtil;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -62,7 +61,7 @@ public abstract class NativeImageMixin {
     private void _upload(int level, int xOffset, int yOffset, int unpackSkipPixels, int unpackSkipRows, int widthIn, int heightIn, boolean blur, boolean clamp, boolean mipmap, boolean autoClose) {
         RenderSystem.assertOnRenderThreadOrInit();
 
-        VTextureSelector.uploadSubTexture(level, widthIn, heightIn, xOffset, yOffset, unpackSkipRows, unpackSkipPixels, this.getWidth(), this.buffer);
+        NeoTextureSelector.uploadSubTexture(level, widthIn, heightIn, xOffset, yOffset, unpackSkipRows, unpackSkipPixels, this.getWidth(), this.buffer);
 
         if (autoClose) {
             this.close();
@@ -76,15 +75,15 @@ public abstract class NativeImageMixin {
     public void downloadTexture(int level, boolean removeAlpha) {
         RenderSystem.assertOnRenderThread();
 
-        VulkanImage.downloadTexture(this.width, this.height, 4, this.buffer, Vulkan.getSwapChain().getColorAttachment().getId());
+        NeoTexture.readTexture(this.width, this.height, 4, this.buffer, NeoHelper.getSwapChainColorAttachmentId());
 
         if (removeAlpha && this.format.hasAlpha()) {
             for (int i = 0; i < this.height; ++i) {
                 for (int j = 0; j < this.getWidth(); ++j) {
                     int v = this.getPixelRGBA(j, i);
 
-                    if(Vulkan.getSwapChain().isBGRAformat)
-                        v = ColorUtil.BGRAtoRGBA(v);
+                    if(NeoHelper.isSwapChainFormatBGRA())
+                        v = NeoHelper.BGRAtoRGBA(v);
 
                     this.setPixelRGBA(j, i, v | 255 << this.format.alphaOffset());
                 }

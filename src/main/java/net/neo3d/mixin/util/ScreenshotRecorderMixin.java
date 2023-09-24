@@ -18,7 +18,7 @@ public class ScreenshotRecorderMixin {
         int j = framebuffer.height;
 
         NativeImage nativeimage = new NativeImage(i, j, false);
-        //RenderSystem.bindTexture(p_92282_.getColorTextureId());
+        //NeoRenderSystem.bindTexture(p_92282_.getColorTextureId());
         nativeimage.downloadTexture(0, true);
         //nativeimage.flipY();
         return nativeimage;

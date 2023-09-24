@@ -40,7 +40,7 @@ public class ChunkBorderRendererMixin {
         BufferBuilder bufferBuilder = tesselator.getBuilder();
         double g = (double)this.minecraft.level.getMinBuildHeight() - e;
         double h = (double)this.minecraft.level.getMaxBuildHeight() - e;
-//        RenderSystem.disableBlend();
+//        NeoRenderSystem.disableBlend();
         ChunkPos chunkPos = entity.chunkPosition();
         double i = (double)chunkPos.getMinBlockX() - d;
         double j = (double)chunkPos.getMinBlockZ() - f;
@@ -185,9 +185,9 @@ public class ChunkBorderRendererMixin {
 //        }
 //
 //        tesselator.end();
-//        RenderSystem.lineWidth(1.0F);
-//        RenderSystem.enableBlend();
-//        RenderSystem.enableTexture();
+//        NeoRenderSystem.lineWidth(1.0F);
+//        NeoRenderSystem.enableBlend();
+//        NeoRenderSystem.enableTexture();
 
         RenderSystem.depthMask(true);
         poseStack2.popPose();

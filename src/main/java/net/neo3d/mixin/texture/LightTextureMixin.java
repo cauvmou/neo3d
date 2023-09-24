@@ -2,8 +2,8 @@ package net.neo3d.mixin.texture;
 
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.texture.DynamicTexture;
-import net.neo3d.interfaces.VAbstractTextureI;
-import net.neo3d.vulkan.texture.VTextureSelector;
+import net.neo3d.backend.interfaces.INeoAbstractTexture;
+import net.neo3d.backend.texture.NeoTextureSelector;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
@@ -19,11 +19,11 @@ public class LightTextureMixin {
      */
     @Overwrite
     public void turnOnLightLayer() {
-//        RenderSystem.setShaderTexture(2, this.textureIdentifier);
+//        NeoRenderSystem.setShaderTexture(2, this.textureIdentifier);
 //        this.client.getTextureManager().bindTexture(this.textureIdentifier);
-//        RenderSystem.texParameter(3553, 10241, 9729);
-//        RenderSystem.texParameter(3553, 10240, 9729);
-        VTextureSelector.setLightTexture(((VAbstractTextureI)this.lightTexture).getVulkanImage());
-//        RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
+//        NeoRenderSystem.texParameter(3553, 10241, 9729);
+//        NeoRenderSystem.texParameter(3553, 10240, 9729);
+        NeoTextureSelector.setLightTexture(((INeoAbstractTexture)this.lightTexture).getTexture());
+//        NeoRenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
     }
 }

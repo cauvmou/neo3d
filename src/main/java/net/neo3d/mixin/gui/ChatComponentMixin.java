@@ -130,11 +130,11 @@ public abstract class ChatComponentMixin {
                                     }
                                 }
 
-//                                RenderSystem.enableBlend();
+//                                NeoRenderSystem.enableBlend();
 //                                poseStack.translate(0.0F, 0.0F, 50.0F);
 //                                this.minecraft.font.drawShadow(poseStack, line.content(), 0.0F, (float)ab, 16777215 + (x << 24));
 //                                GuiBatchRenderer.drawShadow(this.minecraft.font, bufferSource, mat2, line.content(), 0.0F, (float)ab, 16777215 + (x << 24));
-//                                RenderSystem.disableBlend();
+//                                NeoRenderSystem.disableBlend();
 //                                poseStack.popPose();
                             }
                         }
@@ -172,11 +172,11 @@ public abstract class ChatComponentMixin {
 //                                    }
 //                                }
 
-//                                RenderSystem.enableBlend();
+//                                NeoRenderSystem.enableBlend();
 //                                poseStack.translate(0.0F, 0.0F, 50.0F);
 //                                this.minecraft.font.drawShadow(poseStack, line.content(), 0.0F, (float)ab, 16777215 + (x << 24));
                                 GuiBatchRenderer.drawTextShadowed(this.minecraft.font, bufferSource, mat2, line.content(), 0.0F, (float)ab, 16777215 + (x << 24));
-//                                RenderSystem.disableBlend();
+//                                NeoRenderSystem.disableBlend();
 //                                poseStack.popPose();
                             }
                         }
@@ -198,7 +198,7 @@ public abstract class ChatComponentMixin {
 //                    this.minecraft.font.drawShadow(poseStack, Component.translatable("chat.queue", new Object[]{af}), 0.0F, 1.0F, 16777215 + (ag << 24));
                     GuiBatchRenderer.drawTextShadowed(this.minecraft.font, bufferSource, poseStack, Component.translatable("chat.queue", af).getVisualOrderText(), 0.0F, 1.0F, 16777215 + (ag << 24));
                     poseStack.popPose();
-//                    RenderSystem.disableBlend();
+//                    NeoRenderSystem.disableBlend();
                 }
 
                 bufferSource.endBatch();

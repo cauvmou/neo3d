@@ -9,6 +9,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.AbstractTexture;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.resources.ResourceLocation;
+import net.neo3d.backend.NeoRenderSystem;
 import net.neo3d.interfaces.VAbstractTextureI;
 import net.neo3d.vulkan.Renderer;
 import net.neo3d.vulkan.VRenderSystem;
@@ -66,7 +67,7 @@ public abstract class RenderSystemMixin {
      */
     @Overwrite(remap = false)
     public static void initRenderer(int debugVerbosity, boolean debugSync) {
-        VRenderSystem.initRenderer();
+        NeoRenderSystem.initRenderer();
 
         renderThread.setPriority(Thread.NORM_PRIORITY + 2);
     }
@@ -85,7 +86,7 @@ public abstract class RenderSystemMixin {
         assertOnGameThread();
         //GlStateManager._enableColorLogicOp();
         //Vulkan
-        VRenderSystem.enableColorLogicOp();
+        NeoRenderSystem.enableColorLogicOp();
     }
 
     /**
@@ -96,7 +97,7 @@ public abstract class RenderSystemMixin {
         assertOnGameThread();
         //GlStateManager._disableColorLogicOp();
         //Vulkan
-        VRenderSystem.disableColorLogicOp();
+        NeoRenderSystem.disableColorLogicOp();
     }
 
     /**
@@ -107,7 +108,7 @@ public abstract class RenderSystemMixin {
         assertOnGameThread();
         //GlStateManager._logicOp(op.value);
         //Vulkan
-        VRenderSystem.logicOp(op);
+        NeoRenderSystem.logicOp(op);
     }
 
     /**
@@ -133,7 +134,7 @@ public abstract class RenderSystemMixin {
      */
     @Overwrite(remap = false)
     public static int maxSupportedTextureSize() {
-        return VRenderSystem.maxSupportedTextureSize();
+        return NeoRenderSystem.maxSupportedTextureSize();
     }
 
     /**
@@ -141,7 +142,7 @@ public abstract class RenderSystemMixin {
      */
     @Overwrite(remap = false)
     public static void clear(int mask, boolean getError) {
-        VRenderSystem.clear(mask);
+        NeoRenderSystem.clear(mask);
     }
 
     /**
@@ -185,7 +186,7 @@ public abstract class RenderSystemMixin {
     public static void disableDepthTest() {
         assertOnGameThread();
         //GlStateManager._disableDepthTest();
-        VRenderSystem.disableDepthTest();
+        NeoRenderSystem.disableDepthTest();
     }
 
     /**
@@ -195,7 +196,7 @@ public abstract class RenderSystemMixin {
     public static void enableDepthTest() {
         assertOnGameThreadOrInit();
         //GlStateManager._enableDepthTest();
-        VRenderSystem.enableDepthTest();
+        NeoRenderSystem.enableDepthTest();
     }
 
     /**
@@ -205,7 +206,7 @@ public abstract class RenderSystemMixin {
     public static void depthFunc(int i) {
         assertOnGameThread();
         //GlStateManager._depthFunc(i);
-        VRenderSystem.depthFunc(i);
+        NeoRenderSystem.depthFunc(i);
     }
 
     /**
@@ -215,7 +216,7 @@ public abstract class RenderSystemMixin {
     public static void depthMask(boolean b) {
         assertOnGameThread();
         //GlStateManager._depthMask(b);
-        VRenderSystem.depthMask(b);
+        NeoRenderSystem.depthMask(b);
     }
 
     /**
@@ -223,7 +224,7 @@ public abstract class RenderSystemMixin {
      */
     @Overwrite(remap = false)
     public static void colorMask(boolean red, boolean green, boolean blue, boolean alpha) {
-        VRenderSystem.colorMask(red, green, blue, alpha);
+        NeoRenderSystem.colorMask(red, green, blue, alpha);
     }
 
     /**
@@ -240,7 +241,7 @@ public abstract class RenderSystemMixin {
      */
     @Overwrite(remap = false)
     public static void enableBlend() {
-        VRenderSystem.enableBlend();
+        NeoRenderSystem.enableBlend();
     }
 
     /**
@@ -248,7 +249,7 @@ public abstract class RenderSystemMixin {
      */
     @Overwrite(remap = false)
     public static void disableBlend() {
-        VRenderSystem.disableBlend();
+        NeoRenderSystem.disableBlend();
     }
 
     /**
@@ -256,7 +257,7 @@ public abstract class RenderSystemMixin {
      */
     @Overwrite(remap = false)
     public static void blendFunc(GlStateManager.SourceFactor sourceFactor, GlStateManager.DestFactor destFactor) {
-        VRenderSystem.blendFunc(sourceFactor, destFactor);
+        NeoRenderSystem.blendFunc(sourceFactor, destFactor);
     }
 
     /**
@@ -264,7 +265,7 @@ public abstract class RenderSystemMixin {
      */
     @Overwrite(remap = false)
     public static void blendFunc(int srcFactor, int dstFactor) {
-        VRenderSystem.blendFunc(srcFactor, dstFactor);
+        NeoRenderSystem.blendFunc(srcFactor, dstFactor);
     }
 
     /**
@@ -272,7 +273,7 @@ public abstract class RenderSystemMixin {
      */
     @Overwrite(remap = false)
     public static void blendFuncSeparate(GlStateManager.SourceFactor p_69417_, GlStateManager.DestFactor p_69418_, GlStateManager.SourceFactor p_69419_, GlStateManager.DestFactor p_69420_) {
-        VRenderSystem.blendFuncSeparate(p_69417_, p_69418_, p_69419_, p_69420_);
+        NeoRenderSystem.blendFuncSeparate(p_69417_, p_69418_, p_69419_, p_69420_);
     }
 
     /**
@@ -280,7 +281,7 @@ public abstract class RenderSystemMixin {
      */
     @Overwrite(remap = false)
     public static void blendFuncSeparate(int srcFactorRGB, int dstFactorRGB, int srcFactorAlpha, int dstFactorAlpha) {
-        VRenderSystem.blendFuncSeparate(srcFactorRGB, dstFactorRGB, srcFactorAlpha, dstFactorAlpha);
+        NeoRenderSystem.blendFuncSeparate(srcFactorRGB, dstFactorRGB, srcFactorAlpha, dstFactorAlpha);
     }
 
     /**
@@ -291,7 +292,7 @@ public abstract class RenderSystemMixin {
         assertOnGameThread();
         //GlStateManager._enableCull();
         //Vulkan
-        VRenderSystem.enableCull();
+        NeoRenderSystem.enableCull();
     }
 
     /**
@@ -302,7 +303,7 @@ public abstract class RenderSystemMixin {
         assertOnGameThread();
         //GlStateManager._disableCull();
         //Vulkan
-        VRenderSystem.disableCull();
+        NeoRenderSystem.disableCull();
     }
 
     /**
@@ -313,7 +314,7 @@ public abstract class RenderSystemMixin {
         assertOnGameThread();
 //      GlStateManager._enablePolygonOffset();
         //Vulkan
-        VRenderSystem.enablePolygonOffset();
+        NeoRenderSystem.enablePolygonOffset();
     }
 
     /**
@@ -324,7 +325,7 @@ public abstract class RenderSystemMixin {
         assertOnGameThread();
 //      GlStateManager._disablePolygonOffset();
         //Vulkan
-        VRenderSystem.disablePolygonOffset();
+        NeoRenderSystem.disablePolygonOffset();
     }
 
     /**
@@ -335,7 +336,7 @@ public abstract class RenderSystemMixin {
         assertOnGameThread();
 //      GlStateManager._polygonOffset(p_69864_, p_69865_);
         //Vulkan
-        VRenderSystem.polygonOffset(p_69864_, p_69865_);
+        NeoRenderSystem.polygonOffset(p_69864_, p_69865_);
     }
 
     /**
@@ -344,9 +345,7 @@ public abstract class RenderSystemMixin {
     @Overwrite(remap = false)
     public static void clearColor(float p_69425_, float p_69426_, float p_69427_, float p_69428_) {
         assertOnGameThreadOrInit();
-//      GlStateManager._clearColor(p_69425_, p_69426_, p_69427_, p_69428_);
-        //Vulkan
-        VRenderSystem.clearColor(p_69425_, p_69426_, p_69427_, p_69428_);
+        NeoRenderSystem.clearColor(p_69425_, p_69426_, p_69427_, p_69428_);
     }
 
     /**
@@ -358,13 +357,13 @@ public abstract class RenderSystemMixin {
         shaderLightDirections[1] = p_157175_;
 
         //Vulkan
-        VRenderSystem.lightDirection0.buffer.putFloat(0, p_157174_.x());
-        VRenderSystem.lightDirection0.buffer.putFloat(4, p_157174_.y());
-        VRenderSystem.lightDirection0.buffer.putFloat(8, p_157174_.z());
+        NeoRenderSystem.lightDirection0.buffer.putFloat(0, p_157174_.x());
+        NeoRenderSystem.lightDirection0.buffer.putFloat(4, p_157174_.y());
+        NeoRenderSystem.lightDirection0.buffer.putFloat(8, p_157174_.z());
 
-        VRenderSystem.lightDirection1.buffer.putFloat(0, p_157175_.x());
-        VRenderSystem.lightDirection1.buffer.putFloat(4, p_157175_.y());
-        VRenderSystem.lightDirection1.buffer.putFloat(8, p_157175_.z());
+        NeoRenderSystem.lightDirection1.buffer.putFloat(0, p_157175_.x());
+        NeoRenderSystem.lightDirection1.buffer.putFloat(4, p_157175_.y());
+        NeoRenderSystem.lightDirection1.buffer.putFloat(8, p_157175_.z());
     }
 
     /**
@@ -378,7 +377,7 @@ public abstract class RenderSystemMixin {
         shaderColor[3] = a;
 
         //Vulkan
-        VRenderSystem.setShaderColor(r, g, b, a);
+        NeoRenderSystem.setShaderColor(r, g, b, a);
     }
 
     /**
@@ -391,7 +390,7 @@ public abstract class RenderSystemMixin {
         shaderFogColor[2] = h;
         shaderFogColor[3] = i;
 
-        VRenderSystem.setShaderFogColor(f, g, h, i);
+        NeoRenderSystem.setShaderFogColor(f, g, h, i);
     }
 
     /**
@@ -402,7 +401,7 @@ public abstract class RenderSystemMixin {
         assertOnGameThread();
         //GLX._renderCrosshair(p_69882_, true, true, true);
         //Vulkan
-        VRenderSystem.renderCrosshair(p_69882_, true, true, true);
+        NeoRenderSystem.renderCrosshair(p_69882_, true, true, true);
     }
 
     /**
@@ -415,14 +414,14 @@ public abstract class RenderSystemMixin {
             recordRenderCall(() -> {
                 RenderSystemMixin.projectionMatrix = matrix4f;
                 //Vulkan
-                VRenderSystem.applyProjectionMatrix(matrix4f);
-                VRenderSystem.calculateMVP();
+                NeoRenderSystem.applyProjectionMatrix(matrix4f);
+                NeoRenderSystem.calculateMVP();
             });
         } else {
             RenderSystemMixin.projectionMatrix = matrix4f;
             //Vulkan
-            VRenderSystem.applyProjectionMatrix(matrix4f);
-            VRenderSystem.calculateMVP();
+            NeoRenderSystem.applyProjectionMatrix(matrix4f);
+            NeoRenderSystem.calculateMVP();
         }
 
     }
@@ -436,11 +435,11 @@ public abstract class RenderSystemMixin {
         if (!RenderSystem.isOnRenderThread()) {
             RenderSystem.recordRenderCall(() -> {
                 textureMatrix = matrix4f2;
-                VRenderSystem.setTextureMatrix(matrix4f);
+                NeoRenderSystem.setTextureMatrix(matrix4f);
             });
         } else {
             textureMatrix = matrix4f2;
-            VRenderSystem.setTextureMatrix(matrix4f);
+            NeoRenderSystem.setTextureMatrix(matrix4f);
         }
     }
 
@@ -453,7 +452,7 @@ public abstract class RenderSystemMixin {
             RenderSystem.recordRenderCall(() -> textureMatrix.identity());
         } else {
             textureMatrix.identity();
-            VRenderSystem.setTextureMatrix(textureMatrix);
+            NeoRenderSystem.setTextureMatrix(textureMatrix);
         }
     }
 
@@ -467,14 +466,14 @@ public abstract class RenderSystemMixin {
             recordRenderCall(() -> {
                 modelViewMatrix = matrix4f;
                 //Vulkan
-                VRenderSystem.applyModelViewMatrix(matrix4f);
-                VRenderSystem.calculateMVP();
+                NeoRenderSystem.applyModelViewMatrix(matrix4f);
+                NeoRenderSystem.calculateMVP();
             });
         } else {
             modelViewMatrix = matrix4f;
             //Vulkan
-            VRenderSystem.applyModelViewMatrix(matrix4f);
-            VRenderSystem.calculateMVP();
+            NeoRenderSystem.applyModelViewMatrix(matrix4f);
+            NeoRenderSystem.calculateMVP();
         }
 
     }
@@ -486,8 +485,8 @@ public abstract class RenderSystemMixin {
     private static void _restoreProjectionMatrix() {
         projectionMatrix = savedProjectionMatrix;
         //Vulkan
-        VRenderSystem.applyProjectionMatrix(projectionMatrix);
-        VRenderSystem.calculateMVP();
+        NeoRenderSystem.applyProjectionMatrix(projectionMatrix);
+        NeoRenderSystem.calculateMVP();
     }
 
     /**

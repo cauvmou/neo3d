@@ -2,8 +2,8 @@ package net.neo3d.mixin.texture;
 
 import net.minecraft.client.renderer.texture.SpriteLoader;
 import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.neo3d.interfaces.VAbstractTextureI;
-import net.neo3d.vulkan.texture.VulkanImage;
+import net.neo3d.backend.interfaces.INeoAbstractTexture;
+import net.neo3d.backend.texture.NeoTexture;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.injection.At;
@@ -14,9 +14,9 @@ public class SpriteAtlasTextureMixin {
 
     @Redirect(method = "upload", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/platform/TextureUtil;prepareImage(IIII)V"))
     private void redirect(int id, int maxLevel, int width, int height) {
-        VulkanImage image = new VulkanImage.Builder(width, height).setMipLevels(maxLevel + 1).createVulkanImage();
-        ((VAbstractTextureI)(this)).setVulkanImage(image);
-        ((VAbstractTextureI)(this)).bindTexture();
+        NeoTexture texture = new NeoTexture(width, height, new byte[0], maxLevel+1, null);
+        ((INeoAbstractTexture)(this)).setTexture(texture);
+        ((INeoAbstractTexture)(this)).bindTexture();
     }
 
     /**

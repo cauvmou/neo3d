@@ -75,8 +75,8 @@ public abstract class DebugScreenOverlayMixin {
 //        list.add("Debug: Pie [shift]: " + (this.minecraft.options.renderDebugCharts ? "visible" : "hidden") + (bl ? " FPS + TPS" : " FPS") + " [alt]: " + (this.minecraft.options.renderFpsChart ? "visible" : "hidden"));
 //        list.add("For help: press F3 + Q");
 //
-//        RenderSystem.enableBlend();
-//        RenderSystem.setShader(GameRenderer::getPositionColorShader);
+//        NeoRenderSystem.enableBlend();
+//        NeoRenderSystem.setShader(GameRenderer::getPositionColorShader);
 //        GuiBatchRenderer.beginBatch(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
 //
 //        for (int i = 0; i < list.size(); ++i) {
@@ -112,8 +112,8 @@ public abstract class DebugScreenOverlayMixin {
 //    protected void inject1(GuiGraphics guiGraphics, CallbackInfo ci)
 //    {
 //
-//        RenderSystem.enableBlend();
-//        RenderSystem.setShader(GameRenderer::getPositionColorShader);
+//        NeoRenderSystem.enableBlend();
+//        NeoRenderSystem.setShader(GameRenderer::getPositionColorShader);
 //        GuiBatchRenderer.beginBatch(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
 //    }
 //
@@ -159,8 +159,8 @@ public abstract class DebugScreenOverlayMixin {
 //    public void drawSystemInformation(PoseStack matrices) {
 //        List<String> list = this.getSystemInformation();
 //
-//        RenderSystem.enableBlend();
-//        RenderSystem.setShader(GameRenderer::getPositionColorShader);
+//        NeoRenderSystem.enableBlend();
+//        NeoRenderSystem.setShader(GameRenderer::getPositionColorShader);
 //        GuiBatchRenderer.beginBatch(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
 //
 //        for (int i = 0; i < list.size(); ++i) {

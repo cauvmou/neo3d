@@ -3,23 +3,23 @@ package net.neo3d.mixin.texture;
 import com.mojang.blaze3d.platform.TextureUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.renderer.texture.AbstractTexture;
-import net.neo3d.gl.GlTexture;
-import net.neo3d.interfaces.VAbstractTextureI;
-import net.neo3d.vulkan.texture.VTextureSelector;
-import net.neo3d.vulkan.texture.VulkanImage;
+import net.neo3d.backend.interfaces.INeoAbstractTexture;
+import net.neo3d.backend.texture.NeoTexture;
+import net.neo3d.backend.texture.NeoTextureSelector;
+import net.neo3d.backend.gl.GlTexture;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(AbstractTexture.class)
-public abstract class AbstractTextureMixin implements VAbstractTextureI {
+public abstract class AbstractTextureMixin implements INeoAbstractTexture {
     @Shadow protected boolean blur;
     @Shadow protected boolean mipmap;
     @Shadow protected int id;
 
     @Shadow public abstract int getId();
 
-    protected VulkanImage vulkanImage;
+    protected NeoTexture texture;
 
     /**
      * @author
@@ -38,9 +38,9 @@ public abstract class AbstractTextureMixin implements VAbstractTextureI {
      */
     @Overwrite
     public void releaseId() {
-        if(this.vulkanImage != null) {
-            this.vulkanImage.free();
-            this.vulkanImage = null;
+        if(this.texture != null) {
+            this.texture.release();
+            this.texture = null;
         }
 //        else
 //            System.out.println("trying to free null image");
@@ -61,7 +61,7 @@ public abstract class AbstractTextureMixin implements VAbstractTextureI {
             this.blur = blur;
             this.mipmap = mipmap;
 
-            vulkanImage.updateTextureSampler(this.blur, false, this.mipmap);
+            texture.updateSampler(this.blur, false, this.mipmap);
         }
     }
 
@@ -69,21 +69,21 @@ public abstract class AbstractTextureMixin implements VAbstractTextureI {
     public void bindTexture() {
         GlTexture.bindTexture(this.id);
 
-        if (vulkanImage != null)
-            VTextureSelector.bindTexture(vulkanImage);
+        if (texture != null)
+            NeoTextureSelector.bindTexture(texture);
         else
-            VTextureSelector.bindTexture(VTextureSelector.getWhiteTexture());
+            NeoTextureSelector.bindTexture(NeoTextureSelector.getWhiteTexture());
     }
 
-    public VulkanImage getVulkanImage() {
-        return vulkanImage;
+    public NeoTexture getTexture() {
+        return texture;
     }
 
-    public void setVulkanImage(VulkanImage image) {
-        this.vulkanImage = image;
+    public void setTexture(NeoTexture texture) {
+        this.texture = texture;
 
         if(this.id == -1)
             this.getId();
-        GlTexture.setVulkanImage(this.id, this.vulkanImage);
+        GlTexture.setTexture(this.id, this.texture);
     }
 }

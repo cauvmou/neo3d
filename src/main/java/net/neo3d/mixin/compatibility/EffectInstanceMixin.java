@@ -156,7 +156,7 @@ public class EffectInstanceMixin {
 //     */
 //    @Overwrite
 //    public void apply() {
-//        RenderSystem.assertOnGameThread();
+//        NeoRenderSystem.assertOnGameThread();
 //        this.dirty = false;
 //        lastAppliedEffect = this;
 //        this.blend.apply();
@@ -169,11 +169,11 @@ public class EffectInstanceMixin {
 //            String string = (String)this.samplerNames.get(i);
 //            IntSupplier intSupplier = (IntSupplier)this.samplerMap.get(string);
 //            if (intSupplier != null) {
-//                RenderSystem.activeTexture('蓀' + i);
-//                RenderSystem.enableTexture();
+//                NeoRenderSystem.activeTexture('蓀' + i);
+//                NeoRenderSystem.enableTexture();
 //                int j = intSupplier.getAsInt();
 //                if (j != -1) {
-//                    RenderSystem.bindTexture(j);
+//                    NeoRenderSystem.bindTexture(j);
 //                    Uniform.uploadInteger((Integer)this.samplerLocations.get(i), i);
 //                }
 //            }

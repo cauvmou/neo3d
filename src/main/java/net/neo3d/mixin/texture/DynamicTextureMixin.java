@@ -5,8 +5,8 @@ import com.mojang.blaze3d.platform.NativeImage;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.renderer.texture.AbstractTexture;
 import net.minecraft.client.renderer.texture.DynamicTexture;
-import net.neo3d.interfaces.VAbstractTextureI;
-import net.neo3d.vulkan.texture.VulkanImage;
+import net.neo3d.backend.interfaces.INeoAbstractTexture;
+import net.neo3d.backend.texture.NeoTexture;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -38,7 +38,7 @@ public abstract class DynamicTextureMixin extends AbstractTexture {
 //        System.out.println("Dynamic texture mixin");
 //    }
 
-//    @Redirect(method = "<init>(Lcom/mojang/blaze3d/platform/NativeImage;)V", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/systems/RenderSystem;recordRenderCall(Lcom/mojang/blaze3d/pipeline/RenderCall;)V"))
+//    @Redirect(method = "<init>(Lcom/mojang/blaze3d/platform/NativeImage;)V", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/systems/NeoRenderSystem;recordRenderCall(Lcom/mojang/blaze3d/pipeline/RenderCall;)V"))
 //    private void redirect2(RenderCall renderCall) {
 //
 //        createTexture();
@@ -55,10 +55,9 @@ public abstract class DynamicTextureMixin extends AbstractTexture {
     }
 
     private void createTexture() {
-        VAbstractTextureI texture = ((VAbstractTextureI)(this));
-
-        VulkanImage vulkanImage = new VulkanImage.Builder(this.pixels.getWidth(), this.pixels.getHeight()).createVulkanImage();
-        texture.setVulkanImage(vulkanImage);
+        INeoAbstractTexture texture = ((INeoAbstractTexture)(this));
+        NeoTexture neoTexture = new NeoTexture(this.pixels.getWidth(), this.pixels.getHeight());
+        texture.setTexture(neoTexture);
         texture.bindTexture();
 //        texture.setId(TextureMap.getId(vulkanImage));
     }

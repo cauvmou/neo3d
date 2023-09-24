@@ -2,10 +2,7 @@ package net.neo3d.mixin.render;
 
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.neo3d.gl.GlFramebuffer;
-import net.neo3d.gl.GlTexture;
-import net.neo3d.vulkan.Renderer;
-import net.neo3d.vulkan.VRenderSystem;
+import net.neo3d.backend.NeoRenderSystem;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.system.MemoryUtil;
 import org.spongepowered.asm.mixin.Mixin;
@@ -30,7 +27,7 @@ public class GlStateManagerMixin {
     @Overwrite(remap = false)
     public static void _disableBlend() {
         RenderSystem.assertOnRenderThread();
-        VRenderSystem.disableBlend();
+        NeoRenderSystem.disableBlend();
     }
 
     /**
@@ -39,7 +36,7 @@ public class GlStateManagerMixin {
     @Overwrite(remap = false)
     public static void _enableBlend() {
         RenderSystem.assertOnRenderThread();
-        VRenderSystem.enableBlend();
+        NeoRenderSystem.enableBlend();
     }
 
     /**
@@ -48,7 +45,7 @@ public class GlStateManagerMixin {
     @Overwrite(remap = false)
     public static void _blendFunc(int i, int j) {
         RenderSystem.assertOnRenderThread();
-        VRenderSystem.blendFunc(i, j);
+        NeoRenderSystem.blendFunc(i, j);
 
     }
 
@@ -58,7 +55,7 @@ public class GlStateManagerMixin {
     @Overwrite(remap = false)
     public static void _blendFuncSeparate(int i, int j, int k, int l) {
         RenderSystem.assertOnRenderThread();
-        VRenderSystem.blendFuncSeparate(i, j, k, l);
+        NeoRenderSystem.blendFuncSeparate(i, j, k, l);
 
     }
 
@@ -165,7 +162,7 @@ public class GlStateManagerMixin {
     @Overwrite(remap = false)
     public static void _colorMask(boolean red, boolean green, boolean blue, boolean alpha) {
         RenderSystem.assertOnRenderThread();
-        VRenderSystem.colorMask(red, green, blue, alpha);
+        NeoRenderSystem.colorMask(red, green, blue, alpha);
     }
 
     /**
@@ -174,7 +171,7 @@ public class GlStateManagerMixin {
     @Overwrite(remap = false)
     public static void _depthFunc(int i) {
         RenderSystem.assertOnRenderThreadOrInit();
-        VRenderSystem.depthFunc(i);
+        NeoRenderSystem.depthFunc(i);
     }
 
     /**
@@ -183,7 +180,7 @@ public class GlStateManagerMixin {
     @Overwrite(remap = false)
     public static void _clearColor(float f, float g, float h, float i) {
         RenderSystem.assertOnRenderThreadOrInit();
-        VRenderSystem.clearColor(f, g, h, i);
+        NeoRenderSystem.clearColor(f, g, h, i);
     }
 
     /**
@@ -192,7 +189,7 @@ public class GlStateManagerMixin {
     @Overwrite(remap = false)
     public static void _clear(int mask, boolean bl) {
         RenderSystem.assertOnRenderThreadOrInit();
-        VRenderSystem.clear(mask);
+        NeoRenderSystem.clear(mask);
     }
 
     /**
@@ -207,7 +204,7 @@ public class GlStateManagerMixin {
     @Overwrite(remap = false)
     public static void _disableDepthTest() {
         RenderSystem.assertOnRenderThreadOrInit();
-        VRenderSystem.disableDepthTest();
+        NeoRenderSystem.disableDepthTest();
     }
 
     /**
@@ -216,7 +213,7 @@ public class GlStateManagerMixin {
     @Overwrite(remap = false)
     public static void _enableDepthTest() {
         RenderSystem.assertOnRenderThreadOrInit();
-        VRenderSystem.enableDepthTest();
+        NeoRenderSystem.enableDepthTest();
     }
 
     /**
@@ -225,7 +222,7 @@ public class GlStateManagerMixin {
     @Overwrite(remap = false)
     public static void _depthMask(boolean bl) {
         RenderSystem.assertOnRenderThread();
-        VRenderSystem.depthMask(bl);
+        NeoRenderSystem.depthMask(bl);
 
     }
 

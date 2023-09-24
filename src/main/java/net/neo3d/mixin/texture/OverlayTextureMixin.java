@@ -2,8 +2,8 @@ package net.neo3d.mixin.texture;
 
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.neo3d.interfaces.VAbstractTextureI;
-import net.neo3d.vulkan.texture.VTextureSelector;
+import net.neo3d.backend.interfaces.INeoAbstractTexture;
+import net.neo3d.backend.texture.NeoTextureSelector;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -20,19 +20,19 @@ public class OverlayTextureMixin {
     @Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/texture/DynamicTexture;bind()V"))
     private void overlay(DynamicTexture instance) {
 
-        VTextureSelector.setOverlayTexture(((VAbstractTextureI)this.texture).getVulkanImage());
-        VTextureSelector.setActiveTexture(2);
+        NeoTextureSelector.setOverlayTexture(((INeoAbstractTexture)this.texture).getTexture());
+        NeoTextureSelector.setActiveTexture(2);
     }
 
 //    @Inject(method = "<init>", at = @At(value = "RETURN", target = "Lnet/minecraft/client/texture/NativeImageBackedTexture;bindTexture()V"))
     @Inject(method = "<init>", at = @At(value = "RETURN"))
     private void overlay(CallbackInfo ci) {
-        VTextureSelector.setActiveTexture(0);
+        NeoTextureSelector.setActiveTexture(0);
     }
 
     @Inject(method = "setupOverlayColor", at = @At(value = "HEAD"), cancellable = true)
     private void setupOverlay(CallbackInfo ci) {
-        VTextureSelector.setOverlayTexture(((VAbstractTextureI)this.texture).getVulkanImage());
+        NeoTextureSelector.setOverlayTexture(((INeoAbstractTexture)this.texture).getTexture());
         ci.cancel();
     }
 }

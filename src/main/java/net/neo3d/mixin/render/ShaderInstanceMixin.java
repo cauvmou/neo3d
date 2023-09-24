@@ -114,7 +114,7 @@ public class ShaderInstanceMixin implements ShaderMixed {
 //            }
 
 //            if (this.LINE_WIDTH != null) {
-//                this.LINE_WIDTH.set(RenderSystem.getShaderLineWidth());
+//                this.LINE_WIDTH.set(NeoRenderSystem.getShaderLineWidth());
 //            }
         }
     }

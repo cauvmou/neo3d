@@ -3,12 +3,10 @@ package net.neo3d.mixin;
 import com.mojang.blaze3d.platform.*;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.neo3d.Initializer;
+import net.neo3d.backend.NeoRenderSystem;
 import net.neo3d.config.Config;
 import net.neo3d.config.Options;
 import net.neo3d.config.VideoResolution;
-import net.neo3d.vulkan.Renderer;
-import net.neo3d.vulkan.VRenderSystem;
-import net.neo3d.vulkan.Vulkan;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GLCapabilities;
@@ -75,7 +73,7 @@ public abstract class WindowMixin {
 
     @Inject(method = "<init>", at = @At(value = "RETURN"))
     private void getHandle(WindowEventHandler windowEventHandler, ScreenManager screenManager, DisplayData displayData, String string, String string2, CallbackInfo ci) {
-        VRenderSystem.setWindow(this.window);
+        NeoRenderSystem.setWindow(this.window);
     }
 
     /**
@@ -84,7 +82,7 @@ public abstract class WindowMixin {
     @Overwrite
     public void updateVsync(boolean vsync) {
         this.vsync = vsync;
-        Vulkan.setVsync(vsync);
+        NeoRenderSystem.setVsync(vsync);
     }
 
     /**
@@ -117,40 +115,6 @@ public abstract class WindowMixin {
      */
     @Overwrite
     private void setMode() {
-//        boolean bl;
-//        RenderSystem.assertInInitPhase();
-//        boolean bl2 = bl = GLFW.glfwGetWindowMonitor(this.handle) != 0L;
-//
-//        if (this.fullscreen) {
-//            Monitor monitor = this.monitorTracker.getMonitor(this);
-//            if (monitor == null) {
-//                LOGGER.warn("Failed to find suitable monitor for fullscreen mode");
-//                this.fullscreen = false;
-//            } else {
-//                if (MinecraftClient.IS_SYSTEM_MAC) {
-//                    MacWindowUtil.toggleFullscreen(this.handle);
-//                }
-//                VideoMode videoMode = monitor.findClosestVideoMode(this.videoMode);
-//                if (!bl) {
-//                    this.windowedX = this.x;
-//                    this.windowedY = this.y;
-//                    this.windowedWidth = this.width;
-//                    this.windowedHeight = this.height;
-//                }
-//                this.x = 0;
-//                this.y = 0;
-//                this.width = videoMode.getWidth();
-//                this.height = videoMode.getHeight();
-//                GLFW.glfwSetWindowMonitor(this.handle, monitor.getHandle(), this.x, this.y, this.width, this.height, videoMode.getRefreshRate());
-//            }
-//        } else {
-//            this.x = this.windowedX;
-//            this.y = this.windowedY;
-//            this.width = this.windowedWidth;
-//            this.height = this.windowedHeight;
-//            GLFW.glfwSetWindowMonitor(this.handle, 0L, this.x, this.y, this.width, this.height, -1);
-//        }
-
         Config config = Initializer.CONFIG;
 
         long monitor =  GLFW.glfwGetWindowMonitor(this.window);
@@ -164,16 +128,6 @@ public abstract class WindowMixin {
                     LOGGER.error("Not supported resolution, fallback to first supported");
                     videoMode = VideoResolution.getVideoResolutions()[0].getVideoMode();
                 }
-//                if (Minecraft.ON_OSX) {
-//                    MacosUtil.toggleFullscreen(this.window);
-//                }
-//                VideoMode videoMode = monitor.findClosestVideoMode(this.videoMode);
-//                if (!bl) {
-//                    this.windowedX = this.x;
-//                    this.windowedY = this.y;
-//                    this.windowedWidth = this.width;
-//                    this.windowedHeight = this.height;
-//                }
                 this.windowedX = this.x;
                 this.windowedY = this.y;
                 this.windowedWidth = this.width;
@@ -224,7 +178,7 @@ public abstract class WindowMixin {
             }
 
             if(width > 0 && height > 0)
-                Renderer.scheduleSwapChainUpdate();
+                NeoRenderSystem.resize(width, height);
         }
     }
 
@@ -239,7 +193,7 @@ public abstract class WindowMixin {
         this.height = height;
 
         if(width > 0 && height > 0)
-            Renderer.scheduleSwapChainUpdate();
+            NeoRenderSystem.resize(width, height);
     }
 
 }
